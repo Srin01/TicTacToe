@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public class MultiPlayer
 {
+    public static int playerScore = 0;
     private static final Random RANDOM = new Random();
 
-    void multiPlayer()
+    int multiPlayer()
     {
         Board b = new Board();
         Scanner scanner = new Scanner(System.in);
@@ -48,10 +49,16 @@ public class MultiPlayer
             }
 
             if (b.hasPlayerWon(Board.PLAYER_X))
+            {
                 System.out.println("Player1 Won!!! ");
+                playerScore ++;
+                return playerScore;
+            }
             else if (b.hasPlayerWon(Board.PLAYER_O))
             {
                 System.out.println("Player2 Won !");
+                playerScore ++;
+                return playerScore;
             } else
                 System.out.println("Its a Tie!!!!!!!!!!!");
         }
@@ -87,13 +94,20 @@ public class MultiPlayer
             }
 
             if (b.hasPlayerWon(Board.PLAYER_X))
+            {
                 System.out.println("Player1 Won!!! ");
+                playerScore ++;
+                return playerScore;
+            }
             else if (b.hasPlayerWon(Board.PLAYER_O))
             {
                 System.out.println("Player2 Won !");
+                playerScore++;
+                return playerScore;
             } else
                 System.out.println("Its a Tie!!!!!!!!!!!");
         }
+        return playerScore;
     }
 
 }
