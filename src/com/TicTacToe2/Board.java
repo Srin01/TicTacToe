@@ -8,6 +8,8 @@ public class Board
     public static final int NO_PLAYER =0;
     public static final int PLAYER_X = 1;
     public static final int PLAYER_O = 2;
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
     private int[][] board = new int[3][3];
     public Point ComputerMove;
 
@@ -72,7 +74,7 @@ public class Board
         {
             for (int j = 0; j <3 ; j++)
             {
-                String value = "_";
+                String value = (ANSI_BLUE + "_");
 
                 if(board[i][j] == PLAYER_X)
                 {
