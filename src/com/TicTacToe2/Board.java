@@ -10,6 +10,9 @@ public class Board
     public static final int PLAYER_O = 2;
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_RESET = "\u001B[0m";
+    public static final String YELLOW_BOLD = "\033[1;33m"; // YELLOW
+    public static final String BLUE_BOLD = "\033[1;34m";   // BLUE
+    public static final String RED_BOLD = "\033[1;31m";    // RED
     private int[][] board = new int[3][3];
     public Point ComputerMove;
 
@@ -74,15 +77,15 @@ public class Board
         {
             for (int j = 0; j <3 ; j++)
             {
-                String value = (ANSI_BLUE + "_");
+                String value = (YELLOW_BOLD + "_" + ANSI_RESET);
 
                 if(board[i][j] == PLAYER_X)
                 {
-                    value = "X";
+                    value = (RED_BOLD + "X" + ANSI_RESET);
                 }
                 else if(board[i][j] == PLAYER_O)
                 {
-                    value = "O";
+                    value = (BLUE_BOLD + "O" + ANSI_RESET);
                 }
                 System.out.print(value + " ");
             }
@@ -116,11 +119,6 @@ public class Board
                 placeAMove(point, PLAYER_X);
                 int currentScore = minimax(depth +1, PLAYER_O);
                 max = Math.max(currentScore, max);
-
-                if(depth == 0)
-                {
-                    System.out.println("Computer score for position " + point + " is " + currentScore);
-                }
 
                 if(currentScore >= 0)
                 {
