@@ -75,10 +75,10 @@ public class Board
         System.out.println();
         for (int i = 0; i <3 ; i++)
         {
+            System.out.print("                                      ");
             for (int j = 0; j <3 ; j++)
             {
                 String value = (YELLOW_BOLD + "_" + ANSI_RESET);
-
                 if(board[i][j] == PLAYER_X)
                 {
                     value = (RED_BOLD + "X" + ANSI_RESET);

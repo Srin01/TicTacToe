@@ -23,7 +23,7 @@ public class HighScore
     String displayHighScore()
     {
             try {
-                File myObj = new File("Geek.txt");
+                File myObj = new File("C:\\Users\\srini\\IdeaProjects\\TicTacToe2\\src\\com\\TicTacToe2\\Geek.txt");
                 Scanner myReader = new Scanner(myObj);
                     String data = myReader.nextLine();
                     myReader.close();

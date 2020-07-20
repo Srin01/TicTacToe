@@ -23,55 +23,64 @@ public class Main
         HighScore highScore1 = new HighScore();
         boolean playAgain = true;
         //PlayStartingMusic
-
-        System.out.println( ANSI_CYAN + WHITE_BACKGROUND +"Welcome To TIC_TAC_TOE" + ANSI_RESET);
-
-        while(playAgain)
+        System.out.println( "                        Welcome To TIC_TAC_TOE" );
+        System.out.println("                                    1.PlayGame");
+        System.out.println("                                    2.Exit");
+        int chance = scanner.nextInt();
+        if(chance == 1)
         {
-            clrscr();
-            b.displayBoard();
-            highScore = Integer.parseInt(highScore1.displayHighScore());
-            System.out.println("HighScore Secured is : " + highScore);
-            System.out.println( ANSI_PURPLE+"1 Single Player\n" +ANSI_CYAN + "2 Multiplayer" + ANSI_RESET);
-            int player = scanner.nextInt();
-            if(player == 1)
+            while(playAgain)
             {
-                SinglePlayer singlePlayer1 = new SinglePlayer();
-                playerscore = singlePlayer1.singleplayer();
                 clrscr();
-                if(playerscore> highScore)
+                b.displayBoard();
+                highScore = Integer.parseInt(highScore1.displayHighScore());
+                System.out.println("                        HighScore Secured is : " + highScore);
+                System.out.println( ANSI_PURPLE+"                       1 Single Player\n" +ANSI_CYAN + "                       2 Multiplayer" + ANSI_RESET);
+                music.playMusic("C:\\Users\\srini\\IdeaProjects\\TicTacToe2\\arcade-climb_tone_002 (online-audio-converter.com).wav");
+                int player = scanner.nextInt();
+                if(player == 1)
                 {
-                    highScore = playerscore;
-                    System.out.println("You secured High Score");
-                    highScore1.addHighScore(highScore);
-                    highScore = Integer.parseInt(highScore1.displayHighScore());
+                    SinglePlayer singlePlayer1 = new SinglePlayer();
+                    playerscore = singlePlayer1.singleplayer();
+                    clrscr();
+                    if(playerscore> highScore)
+                    {
+                        highScore = playerscore;
+                        System.out.println(ANSI_CYAN + "                        You secured High Score"+ ANSI_RESET);
+                        highScore1.addHighScore(highScore);
+                        highScore = Integer.parseInt(highScore1.displayHighScore());
+                    }
+                    System.out.println(ANSI_PURPLE + "                        Wanna Play Again???? (1 for yes/2 for no)" + ANSI_RESET);
+                    int s  = scanner.nextInt();
+                    if(s == 1)
+                        playAgain = true;
+                    else
+                        playAgain = false;
                 }
-                System.out.println("Wanna Play Again???? (1 for yes/2 for no)");
-                int s  = scanner.nextInt();
-                if(s == 1)
-                    playAgain = true;
-                else
-                    playAgain = false;
-            }
 
-            else
-            {
-                MultiPlayer multiPlayer1 = new MultiPlayer();
-                playerscore = multiPlayer1.multiPlayer();
-                if(playerscore> highScore)
-                {
-                    highScore = playerscore;
-                    System.out.println("You secured High Score");
-                    highScore1.addHighScore(highScore);
-                    highScore = Integer.parseInt(highScore1.displayHighScore());
-                }
-                System.out.println("Wanna Play Again???? (1 for yes/2 for no)");
-                int s  = scanner.nextInt();
-                if(s == 1)
-                    playAgain = true;
                 else
-                    playAgain = false;
+                {
+                    MultiPlayer multiPlayer1 = new MultiPlayer();
+                    playerscore = multiPlayer1.multiPlayer();
+                    if(playerscore> highScore)
+                    {
+                        highScore = playerscore;
+                        System.out.println(ANSI_CYAN + "                        You secured High Score"+ ANSI_RESET);
+                        highScore1.addHighScore(highScore);
+                        highScore = Integer.parseInt(highScore1.displayHighScore());
+                    }
+                    System.out.println(ANSI_PURPLE + "                        Wanna Play Again???? (1 for yes/2 for no)" + ANSI_RESET);
+                    int s  = scanner.nextInt();
+                    if(s == 1)
+                        playAgain = true;
+                    else
+                        playAgain = false;
+                }
             }
+        }
+        else
+        {
+            System.exit(0);
         }
 
     }
